@@ -1,0 +1,21 @@
+Connected to MongoDB
+
+--- Testing Admin Registration ---
+Status: 201
+Response: User registered with username testadmin
+
+--- Testing Receptionist Registration ---
+Status: 201
+Response: User registered with username testrecep
+
+--- Testing Admin Login (by email) ---
+Status: 200
+Role in response: ADMIN
+Token exists: true
+
+--- Testing Receptionist Login (by username) ---
+Status: 200
+Role in response: V_SQ_RECEPTIONIST
+Token exists: true
+
+Disconnected from MongoDB
