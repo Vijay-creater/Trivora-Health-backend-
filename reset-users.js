@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
-// Import User model
 const { User } = require('./src/models/userModel');
 
 const testUsers = [
@@ -40,17 +38,14 @@ const testUsers = [
   }
 ];
 
-async function createTestUsers() {
+async function resetAndCreateUsers() {
   try {
-    // Connect to MongoDB
     await mongoose.connect(process.env.CONNECTION_STRING);
     console.log('✅ Connected to MongoDB');
 
-    // Delete existing test users
-    await User.deleteMany({ 
-      email: { $in: testUsers.map(u => u.email) } 
-    });
-    console.log('🗑️  Cleared existing test users');
+    // DROP entire collection
+    await User.collection.drop();
+    console.log('🗑️  Dropped entire users collection');
 
     // Create new test users
     for (const userData of testUsers) {
@@ -59,7 +54,7 @@ async function createTestUsers() {
       });
       
       await user.save();
-      console.log(`✅ Created user: ${userData.email} (${userData.role})`);
+      console.log(`✅ Created user: ${userData.email}`);
     }
 
     console.log('\n🎉 All test users created successfully!');
@@ -74,9 +69,9 @@ async function createTestUsers() {
 
     process.exit(0);
   } catch (error) {
-    console.error('❌ Error creating test users:', error);
+    console.error('❌ Error:', error.message);
     process.exit(1);
   }
 }
 
-createTestUsers();
+resetAndCreateUsers();

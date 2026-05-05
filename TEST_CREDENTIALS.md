@@ -4,25 +4,25 @@
 
 ### Admin Account
 - **Email:** admin@hospital.com
-- **Password:** admin123
+- **Password:** Admin@2025
 - **Role:** ADMIN
 - **Username:** admin
 
 ### Receptionist Account
 - **Email:** receptionist@hospital.com
-- **Password:** recep123
+- **Password:** Recep@2025
 - **Role:** V_SQ_RECEPTIONIST
 - **Username:** receptionist
 
 ### Chief Doctor Account
 - **Email:** chiefdoctor@hospital.com
-- **Password:** doctor123
+- **Password:** Doctor@2025
 - **Role:** CHIEF_DOCTOR
 - **Username:** chiefdoctor
 
 ### Lab Admin Account
 - **Email:** labadmin@hospital.com
-- **Password:** lab123
+- **Password:** LabAdmin@2025
 - **Role:** LAB_ADMIN
 - **Username:** labadmin
 

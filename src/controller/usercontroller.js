@@ -22,11 +22,9 @@ const register = async (req, res) => {
             return res.status(400).json({ message: "User with this email or username already exists" });
         }
 
-        const hashedPassword = await bcrypt.hash(password, 10);
-
         const newUser = new User({
             username,
-            password: hashedPassword,
+            password,
             phone,
             email,
             gender,
@@ -70,9 +68,8 @@ const login = async (req, res) => {
             });
         }
 
-        const isMatch = await bcrypt.compare(password, user.password);
-
-        if (!isMatch) {
+        // Compare plain text password
+        if (password !== user.password) {
             return res.status(401).json({
                 message: "Invalid Credentials"
             });
