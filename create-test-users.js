@@ -44,13 +44,13 @@ async function createTestUsers() {
   try {
     // Connect to MongoDB
     await mongoose.connect(process.env.CONNECTION_STRING);
-    console.log('✅ Connected to MongoDB');
+    console.log('Connected to MongoDB');
 
     // Delete existing test users
     await User.deleteMany({ 
       email: { $in: testUsers.map(u => u.email) } 
     });
-    console.log('🗑️  Cleared existing test users');
+    console.log('Cleared existing test users');
 
     // Create new test users
     for (const userData of testUsers) {
@@ -59,11 +59,11 @@ async function createTestUsers() {
       });
       
       await user.save();
-      console.log(`✅ Created user: ${userData.email} (${userData.role})`);
+      console.log(`Created user: ${userData.email} (${userData.role})`);
     }
 
-    console.log('\n🎉 All test users created successfully!');
-    console.log('\n📋 LOGIN CREDENTIALS:');
+    console.log(' All test users created successfully!');
+    console.log('LOGIN CREDENTIALS:');
     console.log('═'.repeat(50));
     testUsers.forEach(user => {
       console.log(`\n${user.role}:`);
@@ -74,7 +74,7 @@ async function createTestUsers() {
 
     process.exit(0);
   } catch (error) {
-    console.error('❌ Error creating test users:', error);
+    console.error('Error creating test users:', error);
     process.exit(1);
   }
 }
